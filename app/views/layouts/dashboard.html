@@ -1,0 +1,11 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<app-header></app-header>
+<!-- Side bar here -->
+<sidebar></sidebar>
+<main class=" content-holder">
+	<div class="page-content remodal-bg animsition" ng-class="{expandedContainer: $state.includes('profile')}" >
+		<!-- Your content goes here -->
+		<div ui-view ></div>
+	</div>
+</main>
+</div>
