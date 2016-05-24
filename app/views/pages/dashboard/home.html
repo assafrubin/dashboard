@@ -1,7 +1,7 @@
 <div class="layout-row" layout-sm="column" layout-xs="column"  dragula>
-	<stats options="options1" percent="{{exSensors.ph}}" value="{{exSensors.ph}}" header="pH" arrow="up" footer="2.8% Up this month"></stats>
+	<stats options="options1" percent="{{(exSensors.ph/6.2) *100}}" value="{{exSensors.ph}}" header="pH" arrow="up" footer="2.8% Up this month"></stats>
 	<stats options="options2" percent="{{exSensors.temp}}" value="{{exSensors.temp}}c" header="Temperature" arrow="up" footer="3.6% Up this month"></stats>
-	<stats options="options3" percent="3.2" value="3.2" header="EC" arrow="down" footer="3% Down this month"></stats>
+	<stats options="options3" percent="1.90" value="1.90" header="EC" arrow="down" footer="3% Down this month"></stats>
 </div>
 <div class="layout-row" layout-sm="column" layout-xs="column">
 	<!--<div class="mdl-cell shadow grid-margin" style="background: white;" flex="66" flex-sm="100">-->

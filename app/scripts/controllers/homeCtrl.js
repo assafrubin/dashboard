@@ -8,7 +8,7 @@
  * Controller of MaterialApp
  */
 angular.module('MaterialApp').controller('HomeCtrl', ['$scope', '$timeout', '$interval', 'externalSensorsService', function ($scope, $timeout, $interval, externalSensorsService) {
-  $scope.sensorsLiveData = {temp: [26,24.1,25.3,25.9,26.7], ph: [5,5.3,5.7,6.2,5.9]};
+  $scope.sensorsLiveData = {temp: [26,24.1,25.3,25.9,26.7], ph: [5.8,5.81,5.85,6.0,5.91]};
   $scope.demoLabels = ['0:00', '0:05', '0:10', '0:15', '0:20', '0:25', '0:30'];
   $scope.series = ['Series A', 'Series B'];
   $scope.demoData = [
@@ -43,8 +43,9 @@ angular.module('MaterialApp').controller('HomeCtrl', ['$scope', '$timeout', '$in
     //  $scope.sensorsLiveData.temp.push(data.temp);
     //  $scope.sensorsLiveData.ph.push(data.ph);
     //});
-    var ph = Math.floor((5 + Math.random()) * 100)/100;
-    var temp = Math.floor((26 + Math.random()) * 100)/100;
+    //ph from 5.8-6.2
+    var ph = (time % 30 == 0) ? (Math.floor((5.8 + Math.random() - 0.6) * 100) / 100) : $scope.demoData[1][$scope.demoData[1].length-1];
+    var temp = (time % 30 == 0) ? (Math.floor((26 + Math.random()) * 100) / 100) : $scope.demoData[0][$scope.demoData[0].length -1];
     $scope.exSensors.ph = ph;
     $scope.exSensors.temp = temp;
     $scope.demoData[0].push(temp);
