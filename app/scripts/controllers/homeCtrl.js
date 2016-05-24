@@ -50,6 +50,11 @@ angular.module('MaterialApp').controller('HomeCtrl', ['$scope', '$timeout', '$in
     $scope.demoData[0].push(temp);
     $scope.demoData[1].push(ph);
     $scope.demoLabels.push(Math.floor(time/60) + ':' + (time % 60 < 10 ? ('0' +time %60) : time %60));
+    if ($scope.demoData[0].length > 30) {
+      $scope.demoData[0].shift();
+      $scope.demoData[1].shift();
+      $scope.demoLabels.shift();
+    }
     time += 5;
     $scope.sensorsLiveData.ph.push(ph);
   }
