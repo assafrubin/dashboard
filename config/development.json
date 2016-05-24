@@ -1,0 +1,6 @@
+{
+  "sensorsServer": {
+    "host": "localhost",
+    "port": "5115"
+  }
+}

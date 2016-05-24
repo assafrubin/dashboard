@@ -1,7 +1,7 @@
 <div class="layout-row" layout-sm="column" layout-xs="column"  dragula>
-	<stats options="options1" percent="{{exSensors.temp}}" value="{{exSensors.temp}}%" header="Temperature" arrow="up" footer="18% Up this month"></stats>
-	<stats options="options2" percent="{{exSensors.humidity}}" value="{{exSensors.humidity}}%" header="Humidity" arrow="up" footer="27% Up this month"></stats>
-	<stats options="options3" percent="32K" value="32K" header="Energy consumption" arrow="down" footer="3% Down this month"></stats>
+	<stats options="options1" percent="{{exSensors.ph}}" value="{{exSensors.ph}}" header="pH" arrow="up" footer="2.8% Up this month"></stats>
+	<stats options="options2" percent="{{exSensors.temp}}" value="{{exSensors.temp}}c" header="Temperature" arrow="up" footer="3.6% Up this month"></stats>
+	<stats options="options3" percent="3.2" value="3.2" header="EC" arrow="down" footer="3% Down this month"></stats>
 </div>
 <div class="layout-row" layout-sm="column" layout-xs="column">
 	<!--<div class="mdl-cell shadow grid-margin" style="background: white;" flex="66" flex-sm="100">-->
@@ -16,19 +16,15 @@
         <div class="panel-header">
             Line Chart
         </div>
-        <div class="panel-body forms" >
-            <c3chart bindto-id="line-chart">
-                <chart-column column-id="data-1" column-values="{{sensorsLiveData.temp}}" column-type="line"/>
-                <chart-column column-id="data-2" column-values="{{sensorsLiveData.humidity}}" column-type="line"/>
-                <chart-legend show-legend="false"/>
-                <chart-colors color-pattern="#2979FF,#00D554,#D9534F,#5CB85C,#80b1cb"/>
-                <chart-size chart-height="300" width="450" />
-            </c3chart>
+        <div class="panel-body forms">
+            <canvas id="line" class="chart chart-line" data="demoData"
+                    labels="demoLabels" legend="false" colours="demoColours" options="demoOptions">
+            </canvas>
         </div>
     </div>
 	<div flex="30" flex-sm="100" flex-xs="100" class="mdl-cell shadow grid-margin relative" style="background: #1abc9c;">
 		<div class="panel-body weather">
-			<h5><i class="mdi mdi-map-marker"></i>&nbsp;Colorado</h5>
+			<h5><i class="mdi mdi-map-marker"></i>&nbsp;Rishon Le'Tziyon</h5>
 			<div class="weather-container" style="text-align: center;">
 				<div class="temp">
 					23°<sup>C</sup> <br>

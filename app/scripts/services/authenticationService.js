@@ -1,4 +1,4 @@
-angular.module('MaterialApp').factory('AuthService', function ($q, $http, $location, Session) {
+angular.module('MaterialApp').factory('AuthService', ['$q', '$http', '$location', 'Session', function ($q, $http, $location, Session) {
   var authService = {};
 
   //authService.register = function (user) {
@@ -11,7 +11,7 @@ angular.module('MaterialApp').factory('AuthService', function ($q, $http, $locat
 
   authService.login = function (credentials) {
     return $http
-      .post('http://localhost:5115/login', credentials)
+      .post('http://' + 'localhost:5115' + '/login', credentials)
       .then(function (res) {
         var deferred = $q.defer();
         console.log(res);
@@ -41,4 +41,4 @@ angular.module('MaterialApp').factory('AuthService', function ($q, $http, $locat
   };
 
   return authService;
-});
+}]);

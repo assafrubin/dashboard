@@ -1,0 +1,9 @@
+/**
+ * Created by Assaf on 5/23/2016.
+ */
+{
+  "sensorsServer": {
+    "host": "52.37.84.168",
+    "port": "5115"
+  }
+}

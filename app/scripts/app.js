@@ -29,6 +29,27 @@ angular
     'paperCollapse',
     'pascalprecht.translate'
   ])
+  //.config(function(envServiceProvider) {
+  //  // set the domains and variables for each environment
+  //  envServiceProvider.config({
+  //    vars: {
+  //      production: {
+  //        sensorsServer: {
+  //          host: '52.37.84.168:5115'
+  //        }
+  //      },
+  //      development: {
+  //        sensorsServer: {
+  //          host: 'localhost:5115'
+  //        }
+  //      }
+  //    }
+  //  });
+  //
+  //  // run the environment check, so the comprobation is made
+  //  // before controllers and services are built
+  //  envServiceProvider.check();
+  //})
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 5;
     cfpLoadingBarProvider.includeSpinner = false;

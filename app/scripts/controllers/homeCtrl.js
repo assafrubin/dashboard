@@ -7,20 +7,55 @@
  * # HomeCtrl
  * Controller of MaterialApp
  */
-angular.module('MaterialApp').controller('HomeCtrl', ['$scope', '$timeout', 'externalSensorsService', function ($scope, $timeout, externalSensorsService) {
-  $scope.sensorsLiveData = {temp: [10,20,30,20,10], humidity: [34,23,34,25,43]};
-
+angular.module('MaterialApp').controller('HomeCtrl', ['$scope', '$timeout', '$interval', 'externalSensorsService', function ($scope, $timeout, $interval, externalSensorsService) {
+  $scope.sensorsLiveData = {temp: [26,24.1,25.3,25.9,26.7], ph: [5,5.3,5.7,6.2,5.9]};
+  $scope.demoLabels = ['0:00', '0:05', '0:10', '0:15', '0:20', '0:25', '0:30'];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.demoData = [
+    [26,24.1,25.3,25.9,26.7],
+    [5,5.3,5.7,6.2,5.9]
+  ];
+  $scope.demoColours = [{
+    fillColor: "#8BFD8B",
+    strokeColor: "#41F36A",
+    pointColor: "#fff",
+    pointStrokeColor: "#FFA3FD",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "#FFA3FD",
+  },
+    {
+      fillColor: "#FDCC8B",
+      strokeColor: "#F3B841",
+      pointColor: "#fff",
+      pointStrokeColor: "#F800FC",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "#F800FC",
+    }
+  ];
+  $scope.demoOptions = {
+    animation: false
+  };
+  $scope.exSensors = {};
+  var time = 35;
   function getExSensorsData() {
-    externalSensorsService.getExSensorsData().$promise.then(function (data) {
-      $scope.exSensors = data;
-      $scope.sensorsLiveData.temp.push(data.temp);
-      $scope.sensorsLiveData.humidity.push(data.humidity);
-    });
+    //externalSensorsService.getExSensorsData().$promise.then(function (data) {
+    //  $scope.exSensors = data;
+    //  $scope.sensorsLiveData.temp.push(data.temp);
+    //  $scope.sensorsLiveData.ph.push(data.ph);
+    //});
+    var ph = Math.floor((5 + Math.random()) * 100)/100;
+    var temp = Math.floor((26 + Math.random()) * 100)/100;
+    $scope.exSensors.ph = ph;
+    $scope.exSensors.temp = temp;
+    $scope.demoData[0].push(temp);
+    $scope.demoData[1].push(ph);
+    $scope.demoLabels.push(Math.floor(time/60) + ':' + (time % 60 < 10 ? ('0' +time %60) : time %60));
+    time += 5;
+    $scope.sensorsLiveData.ph.push(ph);
   }
   getExSensorsData();
-  setInterval(getExSensorsData, 5000);
+  $interval(getExSensorsData, 5000);
 
-  //{temperature: 27.9, humidity: 37.3};
 	$scope.options1 = {
 	    lineWidth: 8,
 	    scaleColor: false,
@@ -58,7 +93,7 @@ angular.module('MaterialApp').controller('HomeCtrl', ['$scope', '$timeout', 'ext
 	};
 	if ($(window).width()<600) {
 		$( '.mdl-grid' ).removeAttr('dragula');
-	};
+	}
 	$timeout(function () {
 		$scope.line = {
 		    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

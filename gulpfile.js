@@ -6,7 +6,8 @@ var sass = require('gulp-sass');
 var karma = require('karma').server;
 var argv = require('yargs').argv;
 var $ = require('gulp-load-plugins')();
-
+var replace = require('gulp-replace');
+//var environment = argv.env || 'development';
 
 gulp.task('styles', function() {
     return gulp.src([
@@ -164,7 +165,8 @@ gulp.watch('bower.json', ['wiredep']);
 
 gulp.task('builddist', ['jshint', 'html', 'images', 'lang', 'fonts', 'extras', 'styles'],
     function() {
-        return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+        return gulp.src('dist/**/*')
+          .pipe($.size({title: 'build', gzip: true}));
     });
 
 gulp.task('build', ['clean'], function() {
